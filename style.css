@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #0f172a;
+    color: white;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    background: rgba(15, 23, 42, 0.9);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.navbar a {
+    color: #e5e7eb;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.navbar a:hover {
+    color: #38bdf8;
+}
+
+/* HERO */
+.hero {
+    min-height: 90vh;
+    background: linear-gradient(135deg, #020617, #0f172a);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.hero p {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    color: #cbd5f5;
+}
+
+.buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 12px 26px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.primary {
+    background: #38bdf8;
+    color: #020617;
+}
+
+.primary:hover {
+    background: #0ea5e9;
+}
+
+.secondary {
+    border: 2px solid #38bdf8;
+    color: #38bdf8;
+}
+
+.secondary:hover {
+    background: #38bdf8;
+    color: #020617;
+}
+
+/* ABOUT */
+.about {
+    padding: 70px 20px;
+    text-align: center;
+    background: #020617;
+}
+
+.about h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.about p {
+    max-width: 700px;
+    margin: auto;
+    color: #cbd5f5;
+}
+
+/* LINKS */
+.links {
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.links h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.card {
+    background: #020617;
+    padding: 30px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: white;
+    transition: 0.4s;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.15);
+}
+
+.card i {
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.card span {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.05);
+}
+
+/* COLORS */
+.instagram { color: #e1306c; }
+.telegram { color: #2aabee; }
+.email { color: #fbbf24; }
+.form { color: #22c55e; }
+
+/* FOOTER */
+footer {
+    padding: 20px;
+    text-align: center;
+    background: #020617;
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+}
