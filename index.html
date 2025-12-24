@@ -1,143 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shree Krishna Influencer Marketing Agency</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Instagram Paid Services | Shree Krishna IMA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar">
-  <div class="logo">
-    <img src="Logo.png" class="logo-img" alt="Logo">
-    🪈 श्री Krishna IMA
+<section class="pricing">
+  <h1>Instagram Paid Services</h1>
+  <p>Select service & get instant price</p>
+
+  <label>Choose Service</label>
+  <select id="service">
+    <option value="">Select</option>
+    <option value="views">Reels Views (1000)</option>
+    <option value="followers">Followers (1000)</option>
+    <option value="likes">Reels Likes (1000)</option>
+    <option value="comments">Comments (1000)</option>
+    <option value="story">Story Views (1000)</option>
+  </select>
+
+  <label>Instagram Username / Reel Link</label>
+  <input type="text" id="username" placeholder="@username or reel link">
+
+  <div class="price">
+    Total Price: ₹<span id="price">0</span>
   </div>
-  <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#links">Connect</a></li>
-  </ul>
-</nav>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <h1 class="glow">
-    Shree Krishna<br>
-    <span>Influencer Marketing Agency</span>
-  </h1>
-  <p class="typing">Connecting Brands with Powerful Creators 🚀</p>
+  <button onclick="verify()">Verify & Continue</button>
 
-  <div class="buttons">
-    <a href="https://forms.gle/eQgnMQff64L98y1Q9" target="_blank" class="btn primary">
-      Join as Creator
-    </a>
-    <a href="mailto:Influencers.shreekrishnaima@zohomail.in" class="btn secondary">
-      Contact Us
-    </a>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="about" id="about">
-  <h2>About Us</h2>
-  <p>
-    We provide paid influencer collaborations and premium social media growth
-    services across all platforms.
-  </p>
-</section>
-
-<!-- PAID SOCIAL MEDIA SERVICES -->
-<section class="services" id="services">
-  <h2>Paid Social Media Services</h2>
-  <p class="sub">Click below to see all platform services 👇</p>
-
-  <details class="service-toggle">
-    <summary>🚀 View All Paid Services</summary>
-
-    <div class="platform-grid">
-
-      <div class="platform-card instagram">
-        <i class="fab fa-instagram"></i>
-        <h4>Instagram</h4>
-        <ul>
-          <li>Paid Followers</li>
-          <li>Likes</li>
-          <li>Views</li>
-          <li>Reel Boost</li>
-        </ul>
-      </div>
-
-      <div class="platform-card youtube">
-        <i class="fab fa-youtube"></i>
-        <h4>YouTube</h4>
-        <ul>
-          <li>Subscribers</li>
-          <li>Views</li>
-          <li>Watch Time</li>
-          <li>Shorts Boost</li>
-        </ul>
-      </div>
-
-      <div class="platform-card facebook">
-        <i class="fab fa-facebook"></i>
-        <h4>Facebook</h4>
-        <ul>
-          <li>Page Likes</li>
-          <li>Post Likes</li>
-          <li>Reach Boost</li>
-        </ul>
-      </div>
-
-      <div class="platform-card telegram">
-        <i class="fab fa-telegram"></i>
-        <h4>Telegram</h4>
-        <ul>
-          <li>Channel Members</li>
-          <li>Post Views</li>
-          <li>Growth Boost</li>
-        </ul>
-      </div>
-
-    </div>
-  </details>
-</section>
-
-<!-- LINKS -->
-<section class="links" id="links">
-  <h2>Connect With Us</h2>
-
-  <div class="cards">
-    <a class="card instagram" href="https://www.instagram.com/shree.krishna.ima" target="_blank">
-      <i class="fab fa-instagram"></i>
-      <span>Instagram</span>
-    </a>
-
-    <a class="card telegram" href="https://t.me/shreekrishnaIMA" target="_blank">
-      <i class="fab fa-telegram"></i>
-      <span>Telegram</span>
-    </a>
-
-    <a class="card email" href="mailto:Influencers.shreekrishnaima@zohomail.in">
-      <i class="fas fa-envelope"></i>
-      <span>Email</span>
-    </a>
+  <div class="payment" id="payment">
+    <h3>Payment Step</h3>
+    <p>UPI ID:</p>
+    <div class="upi">7020156295@famtabhi</div>
+    <p class="note">After payment, send screenshot on WhatsApp</p>
   </div>
 </section>
 
-<footer>
-  © 2025 Shree Krishna Influencer Marketing Agency
-</footer>
-
+<script src="script.js"></script>
 </body>
 </html>
