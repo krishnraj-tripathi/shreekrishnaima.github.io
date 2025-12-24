@@ -6,19 +6,19 @@ const prices = {
   story: 50
 };
 
-document.getElementById("service").addEventListener("change", () => {
+function updatePrice() {
   const service = document.getElementById("service").value;
-  document.getElementById("price").innerText = prices[service] || 0;
-});
+  document.getElementById("price").innerText = service ? prices[service] : 0;
+}
 
-function verify() {
+function verifyOrder() {
   const service = document.getElementById("service").value;
-  const user = document.getElementById("username").value;
+  const input = document.getElementById("inputField").value;
 
-  if (!service || user.length < 3) {
-    alert("Please select service & valid username/link");
+  if (!service || input.trim() === "") {
+    alert("Please select service and enter username or link");
     return;
   }
 
-  document.getElementById("payment").style.display = "block";
+  document.getElementById("paymentSection").style.display = "block";
 }
