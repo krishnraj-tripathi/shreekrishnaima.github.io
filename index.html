@@ -1,125 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Shree Krishna Influencer Marketing Agency</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shree Krishna Influencer Marketing Agency</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a81368914c.js" crossorigin="anonymous"></script>
+    <style>
+        /* Reset & Base */
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background: linear-gradient(135deg,#0f2027,#203a43,#2c5364); color:#fff; overflow-x:hidden; }
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+        a { text-decoration:none; color:inherit; }
+        img { max-width:100%; display:block; }
 
-  <link rel="stylesheet" href="style.css">
+        /* Header & Navbar */
+        header { width:100%; position:fixed; top:0; left:0; z-index:100; background:rgba(0,0,0,0.7); backdrop-filter:blur(10px); }
+        .navbar { display:flex; justify-content:space-between; align-items:center; padding:1rem 2rem; }
+        .logo img { width:60px; height:60px; border-radius:50%; border:2px solid #fff; }
+        nav ul { display:flex; gap:1.5rem; list-style:none; }
+        nav li a { font-weight:500; transition:0.3s; }
+        nav li a:hover { color:#ffd700; }
+        .hamburger { display:none; cursor:pointer; flex-direction:column; gap:5px; }
+        .hamburger div { width:25px; height:3px; background:#fff; }
+
+        /* Hero Section */
+        .hero { height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:0 1rem; animation:fadeIn 2s ease forwards; }
+        .hero h1 { font-size:2.8rem; margin-bottom:1rem; font-weight:700; }
+        .hero p { font-size:1.2rem; margin-bottom:2rem; color:#ddd; }
+        .hero .btn { padding:0.8rem 2rem; margin:0.5rem; border:none; border-radius:5px; cursor:pointer; font-weight:600; transition:0.3s; }
+        .btn-primary { background:#ffd700; color:#000; }
+        .btn-primary:hover { background:#ffea00; }
+        .btn-secondary { background:transparent; border:2px solid #ffd700; }
+        .btn-secondary:hover { background:#ffd700; color:#000; }
+
+        /* Sections */
+        section { padding:6rem 2rem; max-width:1200px; margin:0 auto; }
+        section h2 { text-align:center; font-size:2rem; margin-bottom:2rem; color:#ffd700; }
+
+        /* Social Links */
+        .social-links { display:flex; justify-content:center; gap:2rem; margin-bottom:2rem; }
+        .social-links a { display:flex; align-items:center; gap:0.5rem; font-weight:500; transition:0.3s; }
+        .social-links a:hover { color:#ffd700; }
+
+        /* About */
+        .about p { max-width:800px; margin:0 auto; font-size:1.1rem; line-height:1.8; text-align:center; }
+
+        /* Services */
+        .services { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; }
+        .service-card { background:rgba(255,255,255,0.05); padding:2rem; border-radius:10px; text-align:center; transition:0.3s; border:1px solid rgba(255,255,255,0.1); }
+        .service-card:hover { transform:translateY(-10px); box-shadow:0 10px 30px rgba(0,0,0,0.5); border-color:#ffd700; }
+        .service-card h3 { margin-bottom:1rem; font-size:1.2rem; color:#ffd700; }
+        .service-card ul { list-style:none; }
+        .service-card ul li { margin:0.5rem 0; }
+
+        /* Collaborate / Form */
+        .collab iframe { width:100%; height:600px; border:none; border-radius:10px; }
+
+        /* Footer */
+        footer { text-align:center; padding:2rem; background:rgba(0,0,0,0.8); margin-top:2rem; }
+        footer a { color:#ffd700; margin:0 0.5rem; }
+
+        /* Animations */
+        @keyframes fadeIn { 0% {opacity:0; transform:translateY(20px);} 100% {opacity:1; transform:translateY(0);} }
+
+        /* Responsive */
+        @media(max-width:768px){
+            nav ul { display:none; flex-direction:column; background:rgba(0,0,0,0.9); position:absolute; top:70px; right:0; width:200px; padding:1rem; border-radius:0 0 0 10px; }
+            nav ul.active { display:flex; }
+            .hamburger { display:flex; }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="Logo.png" alt="Shree Krishna Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#social">Connect</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#collab">Collaborate</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div><div></div><div></div>
+            </div>
+        </div>
+    </header>
 
-<!-- ===== NAVBAR ===== -->
-<nav class="navbar">
-  <div class="logo">
-    <img src="Logo.png">
-    <span>Shree Krishna IMA</span>
-  </div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Welcome to Shree Krishna Influencer Marketing Agency</h1>
+        <p>Your trusted Influencer Marketing & Social Media Growth Partner</p>
+        <div>
+            <a href="#collab" class="btn btn-primary">Collaborate With Us</a>
+            <a href="#services" class="btn btn-secondary">View Services</a>
+        </div>
+    </section>
 
-  <div class="hamburger" id="hamburger">
-    <span></span><span></span><span></span>
-  </div>
+    <!-- Social Links -->
+    <section id="social">
+        <h2>Connect With Us</h2>
+        <div class="social-links">
+            <a href="https://www.instagram.com/shree.krishna.ima" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
+            <a href="https://t.me/shreekrishnaIMA" target="_blank"><i class="fab fa-telegram"></i>Telegram</a>
+            <a href="mailto:Influencers.shreekrishnaima@zohomail.in"><i class="fas fa-envelope"></i>Email</a>
+        </div>
+    </section>
 
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Paid Services</a></li>
-    <li><a href="#contact">DM Us</a></li>
-  </ul>
-</nav>
+    <!-- About Us -->
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>Shree Krishna Influencer Marketing Agency helps brands grow through verified creators and provides result-oriented social media growth solutions. We act as a bridge between brands and Instagram creators while offering premium social media growth services.</p>
+    </section>
 
-<!-- ===== HERO ===== -->
-<section id="home" class="hero">
-  <canvas id="bgAnimation"></canvas>
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="services">
+            <!-- Instagram Services -->
+            <div class="service-card">
+                <h3>Instagram Services</h3>
+                <ul>
+                    <li>1,000 Views – ₹80</li>
+                    <li>1,000 Followers – ₹200</li>
+                    <li>1,000 Likes – ₹70</li>
+                    <li>1,000 Story Views – ₹60</li>
+                    <li>Reel Views Boost</li>
+                    <li>Engagement Package (Likes + Views)</li>
+                    <li>Contact via DM for order</li>
+                </ul>
+            </div>
+            <!-- YouTube Services -->
+            <div class="service-card">
+                <h3>YouTube Services</h3>
+                <ul>
+                    <li>1,000 Views – ₹150</li>
+                    <li>1,000 Likes – ₹140</li>
+                    <li>1,000 Subscribers – ₹2,580</li>
+                    <li>Watch Time Boost</li>
+                    <li>Video Promotion</li>
+                </ul>
+            </div>
+            <!-- Telegram Services -->
+            <div class="service-card">
+                <h3>Telegram Services</h3>
+                <ul>
+                    <li>1,000 Channel Members – ₹200</li>
+                    <li>10,000 Post Views – ₹100</li>
+                    <li>1,000 Reactions – ₹100</li>
+                    <li>Channel Growth Package</li>
+                </ul>
+            </div>
+            <!-- Facebook Services -->
+            <div class="service-card">
+                <h3>Facebook Services</h3>
+                <ul>
+                    <li>1,000 Reels Views – ₹100</li>
+                    <li>Page Likes + Followers (Combo) – ₹150</li>
+                    <li>1,000 Page Followers – ₹100</li>
+                    <li>1,000 Post Likes – ₹110</li>
+                </ul>
+            </div>
+            <!-- Twitter/X Services -->
+            <div class="service-card">
+                <h3>Twitter / X Services</h3>
+                <ul>
+                    <li>1,000 Likes – ₹220</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-  <div class="hero-content">
-    <h1>Grow Faster With <span>Shree Krishna IMA</span></h1>
-    <p>Trusted Influencer Marketing & Social Media Growth Services</p>
-    <a href="#services" class="btn">Explore Services</a>
-  </div>
-</section>
+    <!-- Collaborate Section -->
+    <section id="collab" class="collab">
+        <h2>Creators – Let’s Collaborate</h2>
+        <iframe src="https://forms.gle/eQgnMQff64L98y1Q9" allowfullscreen></iframe>
+    </section>
 
-<!-- ===== ABOUT ===== -->
-<section id="about" class="about">
-  <h2>About Us</h2>
-  <p>
-    Shree Krishna Influencer Marketing Agency helps brands, creators and businesses
-    grow on Instagram, YouTube, Facebook, Telegram & Twitter with real and fast services.
-  </p>
-</section>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Shree Krishna Influencer Marketing Agency. All Rights Reserved.</p>
+        <div>
+            <a href="https://www.instagram.com/shree.krishna.ima" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://t.me/shreekrishnaIMA" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="mailto:Influencers.shreekrishnaima@zohomail.in"><i class="fas fa-envelope"></i></a>
+        </div>
+    </footer>
 
-<!-- ===== SERVICES ===== -->
-<section id="services" class="services">
-  <h2>Paid Services</h2>
-
-  <div class="service-box">
-    <h3>Instagram</h3>
-    <ul>
-      <li>1000 Views – ₹80</li>
-      <li>1000 Followers – ₹200</li>
-      <li>1000 Likes – ₹70</li>
-      <li>Story Views 1000 – ₹60</li>
-    </ul>
-    <a class="dm-btn" target="_blank"
-       href="https://www.instagram.com/shree.krishna.ima?igsh=dTJqYTFtNnZxMHZn">DM on Instagram</a>
-  </div>
-
-  <div class="service-box">
-    <h3>YouTube</h3>
-    <ul>
-      <li>1000 Views – ₹150</li>
-      <li>1000 Likes – ₹140</li>
-      <li>1000 Subscribers – ₹2580</li>
-    </ul>
-    <a class="dm-btn" target="_blank"
-       href="https://www.instagram.com/shree.krishna.ima?igsh=dTJqYTFtNnZxMHZn">DM on Instagram</a>
-  </div>
-
-  <div class="service-box">
-    <h3>Telegram</h3>
-    <ul>
-      <li>1000 Members – ₹200</li>
-      <li>10000 Post Views – ₹100</li>
-      <li>1000 Reactions – ₹100</li>
-    </ul>
-    <a class="dm-btn" target="_blank"
-       href="https://www.instagram.com/shree.krishna.ima?igsh=dTJqYTFtNnZxMHZn">DM on Instagram</a>
-  </div>
-
-  <div class="service-box">
-    <h3>Facebook</h3>
-    <ul>
-      <li>1000 Reels Views – ₹100</li>
-      <li>Page Likes + Followers – ₹150</li>
-      <li>1000 Followers – ₹100</li>
-      <li>1000 Likes – ₹110</li>
-    </ul>
-    <a class="dm-btn" target="_blank"
-       href="https://www.instagram.com/shree.krishna.ima?igsh=dTJqYTFtNnZxMHZn">DM on Instagram</a>
-  </div>
-
-  <div class="service-box">
-    <h3>Twitter</h3>
-    <ul>
-      <li>1000 Likes – ₹220</li>
-    </ul>
-    <a class="dm-btn" target="_blank"
-       href="https://www.instagram.com/shree.krishna.ima?igsh=dTJqYTFtNnZxMHZn">DM on Instagram</a>
-  </div>
-</section>
-
-<!-- ===== CONTACT ===== -->
-<section id="contact" class="contact">
-  <h2>Ready to Grow?</h2>
-  <a class="btn" target="_blank"
-     href="https://www.instagram.com/shree.krishna.ima?igsh=dTJqYTFtNnZxMHZn">
-    DM Us on Instagram
-  </a>
-</section>
-
-<script src="script.js"></script>
+    <!-- JS for Hamburger -->
+    <script>
+        const menu = document.querySelector('nav ul');
+        function toggleMenu() { menu.classList.toggle('active'); }
+    </script>
 </body>
 </html>
