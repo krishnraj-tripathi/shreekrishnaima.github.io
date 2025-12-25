@@ -71,6 +71,7 @@ body {
   justify-content: center;
   text-align: center;
   position: relative;
+  overflow: hidden;
 }
 
 .hero canvas {
@@ -79,16 +80,30 @@ body {
 }
 
 .hero-content {
+  position: relative;
   z-index: 1;
+  width: 100%;
+  padding: 0 20px;
 }
 
-.hero-content h1 {
-  font-size: 3rem;
+/* 🔥 SINGLE LINE RESPONSIVE HEADING */
+.hero-title {
+  width: 100%;
+  font-size: clamp(1rem, 3.2vw, 3rem);
+  white-space: nowrap;      /* EK LINE */
+  overflow: hidden;         /* frame ke bahar nahi */
+  text-overflow: ellipsis;  /* safety */
+  text-align: center;
   line-height: 1.2;
 }
 
-.hero-content span {
+.hero-title span {
   color: #ffd700;
+}
+
+.hero-content p {
+  margin-top: 15px;
+  font-size: 1.1rem;
 }
 
 .cta-btn {
@@ -147,7 +162,7 @@ footer {
   color: #aaa;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE NAV */
 @media (max-width: 900px) {
   .menu-toggle {
     display: block;
