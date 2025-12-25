@@ -1,24 +1,43 @@
-/* HAMBURGER MENU */
-const hamburger = document.getElementById("hamburger");
-const navLinks = document.getElementById("navLinks");
+const canvas = document.getElementById("heroCanvas");
+const ctx = canvas.getContext("2d");
 
-hamburger.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-});
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-/* AUTO SCALE HEADING (NO CUT, NO …) */
-function fitHeading() {
-  const el = document.getElementById("heroTitle");
-  const parent = el.parentElement;
+let particles = [];
 
-  let scale = 1;
-  el.style.transform = "scale(1)";
-
-  while (el.scrollWidth > parent.clientWidth && scale > 0.4) {
-    scale -= 0.01;
-    el.style.transform = `scale(${scale})`;
-  }
+for (let i = 0; i < 80; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 2 + 1,
+    dx: Math.random() * 1 - 0.5,
+    dy: Math.random() * 1 - 0.5
+  });
 }
 
-window.addEventListener("load", fitHeading);
-window.addEventListener("resize", fitHeading);
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#ffd700";
+
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fill();
+
+    p.x += p.dx;
+    p.y += p.dy;
+
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
