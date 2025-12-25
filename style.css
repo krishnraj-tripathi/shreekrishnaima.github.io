@@ -74,17 +74,19 @@ body {
   position: relative;
   z-index: 1;
   color: #fff;
+  max-width: 95%; /* frame me fit karne ke liye */
 }
 
-/* Hero Title Fix for Mobile & Desktop */
+/* Hero Title Responsive + Frame Fit */
 .hero-content h1 {
   font-size: 3rem;
   margin-bottom: 20px;
   animation: fadeInDown 1s ease forwards;
 
-  white-space: nowrap;       /* Text ek line me rahe */
-  overflow: hidden;          /* Extra text hide ho jaye */
-  text-overflow: ellipsis;   /* Agar bahut lamba ho toh ... dikhaye */
+  white-space: normal;     /* line wrap allow */
+  overflow: visible;       /* poora text visible */
+  text-align: center;      /* center alignment */
+  line-height: 1.2;        /* tight spacing */
 }
 
 .hero-content h1 span {
@@ -226,6 +228,12 @@ footer {
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .hero-content h1 {
+    font-size: 2.2rem;  /* medium screens */
+  }
+}
+
 @media (max-width: 768px) {
   .nav-links {
     flex-direction: column;
@@ -233,11 +241,17 @@ footer {
   }
 
   .hero-content h1 {
-    font-size: 1.6rem; /* Mobile me font chhota kar do */
+    font-size: 1.6rem; /* mobile screens */
   }
 
   .service-cards {
     flex-direction: column;
     align-items: center;
   }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.3rem; /* chhota mobile screens */
   }
+}
