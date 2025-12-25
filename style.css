@@ -16,10 +16,9 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 15px 40px;
+  background: rgba(0,0,0,0.85);
   position: sticky;
   top: 0;
-  background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(10px);
   z-index: 100;
 }
 
@@ -34,8 +33,8 @@ body {
 }
 
 .nav-links {
-  list-style: none;
   display: flex;
+  list-style: none;
   gap: 25px;
 }
 
@@ -45,13 +44,9 @@ body {
   font-weight: 600;
 }
 
-.nav-links a:hover {
-  color: #ffd700;
-}
-
 .cta-nav {
   background: #ffd700;
-  color: #000 !important;
+  color: #000;
   padding: 8px 15px;
   border-radius: 20px;
 }
@@ -69,9 +64,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   position: relative;
   overflow: hidden;
+  text-align: center;
 }
 
 .hero canvas {
@@ -83,18 +78,23 @@ body {
   position: relative;
   z-index: 1;
   width: 100%;
-  padding: 0 20px;
+  padding: 0 15px;
 }
 
-/* 🔥 SINGLE LINE RESPONSIVE HEADING */
+/* ✅ PERFECT SINGLE LINE HEADING */
 .hero-title {
-  width: 100%;
-  font-size: clamp(1rem, 3.2vw, 3rem);
-  white-space: nowrap;      /* EK LINE */
-  overflow: hidden;         /* frame ke bahar nahi */
-  text-overflow: ellipsis;  /* safety */
-  text-align: center;
-  line-height: 1.2;
+  white-space: nowrap;          /* EK LINE */
+  font-size: clamp(0.9rem, 2.8vw, 3rem);
+  max-width: 100%;
+  display: inline-block;
+  transform-origin: center;
+}
+
+/* Ultra small phones safety */
+@media (max-width: 360px) {
+  .hero-title {
+    transform: scale(0.9);
+  }
 }
 
 .hero-title span {
@@ -103,7 +103,6 @@ body {
 
 .hero-content p {
   margin-top: 15px;
-  font-size: 1.1rem;
 }
 
 .cta-btn {
@@ -113,48 +112,31 @@ body {
   background: #ffd700;
   color: #000;
   border-radius: 50px;
-  font-weight: bold;
   text-decoration: none;
+  font-weight: bold;
 }
 
-/* SECTIONS */
+/* Sections */
 .about, .links, .services {
   padding: 80px 40px;
   text-align: center;
 }
 
-/* CARDS */
+/* Cards */
 .link-cards, .service-cards {
   display: flex;
+  justify-content: center;
   gap: 25px;
   flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 40px;
 }
 
 .card, .service-card {
   background: #1a1a1a;
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 5px 20px rgba(255,215,0,0.2);
 }
 
-.service-card h3 {
-  color: #ffd700;
-}
-
-.dm-btn {
-  display: inline-block;
-  margin-top: 15px;
-  background: #ffd700;
-  color: #000;
-  padding: 10px 18px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* FOOTER */
+/* Footer */
 footer {
   padding: 25px;
   text-align: center;
@@ -162,7 +144,7 @@ footer {
   color: #aaa;
 }
 
-/* RESPONSIVE NAV */
+/* Responsive Nav */
 @media (max-width: 900px) {
   .menu-toggle {
     display: block;
@@ -171,7 +153,7 @@ footer {
   .nav-links {
     position: absolute;
     top: 70px;
-    right: 30px;
+    right: 20px;
     background: #000;
     flex-direction: column;
     padding: 20px;
@@ -182,4 +164,4 @@ footer {
   .nav-links.active {
     display: flex;
   }
-}
+  }
