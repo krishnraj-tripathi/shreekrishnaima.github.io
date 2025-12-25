@@ -1,4 +1,4 @@
-/* Hamburger Toggle */
+/* Hamburger Menu */
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
 
@@ -7,28 +7,28 @@ menuToggle.addEventListener("click", () => {
 });
 
 /* Smooth Scroll */
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', e => {
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", e => {
     e.preventDefault();
     navLinks.classList.remove("active");
-    document.querySelector(link.getAttribute('href'))
-      .scrollIntoView({ behavior: 'smooth' });
+    document.querySelector(link.getAttribute("href"))
+      .scrollIntoView({ behavior: "smooth" });
   });
 });
 
-/* Canvas Particles */
-const canvas = document.getElementById('heroCanvas');
-const ctx = canvas.getContext('2d');
+/* Hero Canvas Particles */
+const canvas = document.getElementById("heroCanvas");
+const ctx = canvas.getContext("2d");
 
 function resize() {
   canvas.width = innerWidth;
   canvas.height = innerHeight;
 }
 resize();
-addEventListener('resize', resize);
+addEventListener("resize", resize);
 
 let particles = [];
-const colors = ['#ffd700', '#fff'];
+const colors = ["#ffd700", "#ffffff"];
 
 class Particle {
   constructor() {
@@ -39,12 +39,6 @@ class Particle {
     this.dy = (Math.random() - 0.5);
     this.color = colors[Math.floor(Math.random() * colors.length)];
   }
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-    ctx.fillStyle = this.color;
-    ctx.fill();
-  }
   update() {
     this.x += this.dx;
     this.y += this.dy;
@@ -52,12 +46,18 @@ class Particle {
     if (this.y < 0 || this.y > canvas.height) this.dy *= -1;
     this.draw();
   }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+  }
 }
 
 for (let i = 0; i < 120; i++) particles.push(new Particle());
 
 function animate() {
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   particles.forEach(p => p.update());
   requestAnimationFrame(animate);
 }
