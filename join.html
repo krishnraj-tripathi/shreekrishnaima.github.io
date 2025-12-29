@@ -54,46 +54,47 @@
     <h2>🚀 Join Our Team</h2>
     <p>Fill this form to get paid sponsorships.</p>
     
-    <form name="submit-to-google-sheet">
+    <form 
+        action="https://script.google.com/macros/s/AKfycbwE32dfThGEmJXzd3rguCEruKkQ5Rkw4H6xA44WWJibnP3IY_c0Z4JQZwjThj4hcgDPHg/exec" 
+        method="POST" 
+        target="hidden_iframe" 
+        onsubmit="submitted=true;">
+
         <input type="text" name="Name" placeholder="Full Name" required>
         <input type="tel" name="WhatsApp" placeholder="WhatsApp Number" required>
         <input type="url" name="Instagram_Link" placeholder="Instagram/YouTube Link" required>
         <input type="text" name="Followers" placeholder="Total Followers (e.g. 15k)" required>
         <input type="number" name="Promo_Price" placeholder="1 Promo Price (₹)" required>
+        
         <button type="submit" id="btnSubmit">Submit & Join</button>
     </form>
     
     <p id="msg" class="loading-text">⏳ Saving Details...</p>
     <a href="index.html" class="back-link">← Back to Home Page</a>
+
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
 </div>
 
 <script>
-    // ✅ Tested & Verified Link
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwE32dfThGEmJXzd3rguCEruKkQ5Rkw4H6xA44WWJibnP3IY_c0Z4JQZwjThj4hcgDPHg/exec';
+    // ✅ Simple Logic: Form submit hote hi redirect timer chalu
+    var submitted = false;
     
-    const form = document.forms['submit-to-google-sheet'];
-    const btn = document.getElementById('btnSubmit');
-    const msg = document.getElementById('msg');
+    document.querySelector('form').onsubmit = function() {
+        var btn = document.getElementById('btnSubmit');
+        var msg = document.getElementById('msg');
+        
+        // Show Loading
+        submitted = true;
+        btn.innerHTML = "Processing...";
+        btn.style.opacity = "0.7";
+        msg.style.display = "block";
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      
-      btn.innerHTML = "Processing...";
-      btn.style.opacity = "0.7";
-      msg.style.display = "block";
-
-      // ✅ Data bhej rahe hain
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-            // Success: Redirect
+        // 1.5 Second wait karein (Data jaane ke liye) phir Redirect karein
+        setTimeout(function() {
             window.location.href = "index.html";
-        })
-        .catch(error => {
-            // Error (CORS): Redirect anyway (Data chala gaya hai)
-            console.log("Redirecting...");
-            window.location.href = "index.html";
-        });
-    });
+        }, 1500); 
+    };
 </script>
 
 </body>
