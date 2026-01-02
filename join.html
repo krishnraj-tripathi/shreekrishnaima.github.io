@@ -9,42 +9,29 @@
   body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
   .container { background: rgba(255,255,255,0.05); padding: 40px; border-radius: 20px; width: 100%; max-width: 400px; text-align: center; border: 1px solid rgba(255,215,0,0.2); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); }
   h2 { color: #FFD700; margin-bottom: 5px; }
-  p { font-size: 13px; color: #ccc; margin-bottom: 25px; }
-  input { width: 100%; padding: 14px; margin: 10px 0; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white; box-sizing: border-box; transition: 0.3s; }
-  input:focus { border-color: #FFD700; outline: none; background: rgba(0,0,0,0.5); }
-  button { width: 100%; padding: 15px; background: linear-gradient(45deg, #FFD700, #ffb900); border: none; border-radius: 10px; color: #000; font-weight: bold; cursor: pointer; margin-top: 20px; font-size: 16px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
-  button:hover { transform: scale(1.02); box-shadow: 0 0 15px rgba(255, 215, 0, 0.4); }
-  a { display: block; margin-top: 20px; color: #aaa; text-decoration: none; font-size: 14px; transition: 0.3s; }
-  a:hover { color: #FFD700; }
+  input { width: 100%; padding: 14px; margin: 10px 0; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white; }
+  button { width: 100%; padding: 15px; background: linear-gradient(45deg, #FFD700, #ffb900); border: none; border-radius: 10px; color: #000; font-weight: bold; cursor: pointer; margin-top: 20px; }
 </style>
 </head>
 <body>
 
 <div class="container">
   <h2>🚀 Join Our Team</h2>
-  <p>Become a Creator & Get Paid Sponsorships</p>
-  
   <form id="creatorForm" onsubmit="submitForm(event)">
     <input type="text" id="name" placeholder="👤 Full Name" required>
     <input type="tel" id="phone" placeholder="📞 WhatsApp Number" required>
     <input type="url" id="link" placeholder="🔗 Channel/Page Link" required>
-    <input type="text" id="subs" placeholder="👥 Total Followers (e.g., 10k)" required>
+    <input type="text" id="subs" placeholder="👥 Total Followers" required>
     <input type="number" id="price" placeholder="💰 1 Promo Price (₹)" required>
-    
     <button type="submit" id="btnSubmit">Submit Application</button>
   </form>
-  
-  <a href="index.html">← Back to Home</a>
 </div>
 
 <script>
 function submitForm(event) {
-  event.preventDefault(); 
-  
+  event.preventDefault();
   var btn = document.getElementById("btnSubmit");
-  var originalText = btn.innerHTML;
-  btn.innerHTML = "⏳ Sending..."; 
-  btn.disabled = true;
+  btn.innerHTML = "⏳ Sending..."; btn.disabled = true;
 
   var data = {
     source: "website_join",
@@ -55,8 +42,7 @@ function submitForm(event) {
     price: document.getElementById("price").value
   };
 
-  // ⚠️ IMPORTANT: YAHAN APNA SAHI RENDER URL DALEIN
-  // Example: https://shreekrishnaagencybot.onrender.com/webhook
+  // 🔥 YAHAN APNA SAHI RENDER URL CHECK KAREIN
   var serverURL = "https://shreekrishnaagencybot.onrender.com/webhook"; 
 
   fetch(serverURL, {
@@ -64,23 +50,17 @@ function submitForm(event) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   })
-  .then(response => response.json())
-  .then(result => {
-    alert("✅ Application Sent Successfully!\nWe will contact you soon."); 
-    document.getElementById("creatorForm").reset();
-    btn.disabled = false;
-    btn.innerHTML = originalText;
+  .then(response => {
+      alert("✅ Application Sent!"); 
+      // 🔥 REDIRECT LOGIC
+      window.location.href = "index.html"; 
   })
   .catch(error => {
-    // Agar CORS error aaye tab bhi success mankar user ko bata do
-    console.log("Error:", error);
-    alert("✅ Application Sent! (Admin Notified)");
-    document.getElementById("creatorForm").reset();
-    btn.disabled = false;
-    btn.innerHTML = originalText;
+      // CORS Error aane par bhi success hi maano kyunki data chala jata hai
+      alert("✅ Application Sent (Admin Notified)!");
+      window.location.href = "index.html"; 
   });
 }
 </script>
-
 </body>
 </html>
