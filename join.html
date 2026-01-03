@@ -2,65 +2,279 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Join Team - Shree Krishna Agency</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Join - Shree Krishna Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <style>
-  body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-  .container { background: rgba(255,255,255,0.05); padding: 40px; border-radius: 20px; width: 100%; max-width: 400px; text-align: center; border: 1px solid rgba(255,215,0,0.2); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); }
-  h2 { color: #FFD700; margin-bottom: 5px; }
-  input { width: 100%; padding: 14px; margin: 10px 0; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white; }
-  button { width: 100%; padding: 15px; background: linear-gradient(45deg, #FFD700, #ffb900); border: none; border-radius: 10px; color: #000; font-weight: bold; cursor: pointer; margin-top: 20px; }
+/* --- GLOBAL STYLES (Gold & Black Theme) --- */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent; }
+
+:root {
+  --gold: #FFD700;
+  --gold-grad: linear-gradient(45deg, #FFD700, #FDB931, #FFD700);
+  --dark-bg: #050505;
+  --text-main: #e0e0e0;
+}
+
+body {
+  background-color: var(--dark-bg); color: var(--text-main);
+  overflow-x: hidden; min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+
+#particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
+
+/* --- FORM CONTAINER --- */
+.container {
+    width: 90%; max-width: 500px;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--gold); border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0 0 50px rgba(255, 215, 0, 0.15);
+    margin: 50px 0;
+    position: relative;
+    animation: slideUp 0.8s ease-out;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-header { text-align: center; margin-bottom: 30px; }
+.form-logo { 
+    width: 80px; height: 80px; border-radius: 50%; 
+    border: 2px solid var(--gold); object-fit: cover; 
+    margin-bottom: 15px; box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+.form-header h2 { font-size: 2rem; color: #fff; margin-bottom: 5px; }
+.form-header p { color: #aaa; font-size: 0.9rem; }
+
+/* --- TOGGLE SWITCH --- */
+.toggle-box {
+    display: flex; background: rgba(255,255,255,0.05);
+    border-radius: 30px; margin-bottom: 30px; position: relative;
+    border: 1px solid rgba(255, 215, 0, 0.3); overflow: hidden;
+}
+.toggle-btn {
+    flex: 1; padding: 12px; text-align: center; cursor: pointer;
+    font-weight: 600; color: #888; transition: 0.3s; z-index: 2;
+}
+.toggle-btn.active { color: #000; }
+.slider {
+    position: absolute; top: 0; left: 0; width: 50%; height: 100%;
+    background: var(--gold-grad); border-radius: 30px;
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55); z-index: 1;
+}
+
+/* --- INPUTS --- */
+.input-group { margin-bottom: 20px; position: relative; }
+.input-group i {
+    position: absolute; left: 15px; top: 50%; transform: translateY(-50%);
+    color: var(--gold); font-size: 1.1rem;
+}
+.input-field {
+    width: 100%; padding: 15px 15px 15px 45px;
+    background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; color: #fff; font-size: 1rem; outline: none; transition: 0.3s;
+}
+.input-field:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(255, 215, 0, 0.2); }
+select.input-field { appearance: none; cursor: pointer; }
+
+/* --- BUTTON --- */
+.submit-btn {
+    width: 100%; padding: 15px; border-radius: 50px; border: none;
+    background: var(--gold-grad); color: #000; font-size: 1.1rem;
+    font-weight: 800; cursor: pointer; transition: 0.3s;
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+}
+.submit-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5); }
+.submit-btn:disabled { background: #555; cursor: not-allowed; }
+
+.back-link {
+    display: block; text-align: center; margin-top: 20px;
+    color: #888; text-decoration: none; font-size: 0.9rem; transition: 0.3s;
+}
+.back-link:hover { color: var(--gold); }
+
+#brand-form { display: none; }
 </style>
 </head>
 <body>
 
+<div id="particles-js"></div>
+
 <div class="container">
-  <h2>🚀 Join Our Team</h2>
-  <form id="creatorForm" onsubmit="submitForm(event)">
-    <input type="text" id="name" placeholder="👤 Full Name" required>
-    <input type="tel" id="phone" placeholder="📞 WhatsApp Number" required>
-    <input type="url" id="link" placeholder="🔗 Channel/Page Link" required>
-    <input type="text" id="subs" placeholder="👥 Total Followers" required>
-    <input type="number" id="price" placeholder="💰 1 Promo Price (₹)" required>
-    <button type="submit" id="btnSubmit">Submit Application</button>
-  </form>
+    <div class="form-header">
+        <img src="Logo.png" alt="Logo" class="form-logo">
+        <h2 id="form-title">Join as Creator</h2>
+        <p>Details will be sent to our Team instantly.</p>
+    </div>
+
+    <div class="toggle-box">
+        <div class="slider" id="slider"></div>
+        <div class="toggle-btn active" onclick="showCreator()">Creator</div>
+        <div class="toggle-btn" onclick="showBrand()">Brand</div>
+    </div>
+
+    <form id="creator-form">
+        <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text" id="c-name" class="input-field" placeholder="Full Name" required>
+        </div>
+        <div class="input-group">
+            <i class="fab fa-instagram"></i>
+            <input type="text" id="c-link" class="input-field" placeholder="Channel/Page Link" required>
+        </div>
+        <div class="input-group">
+            <i class="fas fa-users"></i>
+            <input type="text" id="c-subs" class="input-field" placeholder="Total Followers" required>
+        </div>
+        <div class="input-group">
+            <i class="fas fa-tag"></i>
+            <input type="number" id="c-price" class="input-field" placeholder="1 Promo Price (₹)" required>
+        </div>
+        <div class="input-group">
+            <i class="fab fa-whatsapp"></i>
+            <input type="tel" id="c-phone" class="input-field" placeholder="WhatsApp Number" required>
+        </div>
+        <button type="submit" id="c-btn" class="submit-btn">Submit Application 🚀</button>
+    </form>
+
+    <form id="brand-form">
+        <div class="input-group">
+            <i class="fas fa-building"></i>
+            <input type="text" id="b-name" class="input-field" placeholder="Brand/Company Name" required>
+        </div>
+        <div class="input-group">
+            <i class="fas fa-bullseye"></i>
+            <input type="text" id="b-goal" class="input-field" placeholder="Goal (Sales/Awareness)" required>
+        </div>
+        <div class="input-group">
+            <i class="fas fa-wallet"></i>
+            <select id="b-budget" class="input-field">
+                <option value="" disabled selected>Select Budget</option>
+                <option value="Under ₹10k">Under ₹10k</option>
+                <option value="₹10k - ₹50k">₹10k - ₹50k</option>
+                <option value="Above ₹50k">Above ₹50k</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <i class="fab fa-whatsapp"></i>
+            <input type="tel" id="b-phone" class="input-field" placeholder="WhatsApp Number" required>
+        </div>
+        <button type="submit" id="b-btn" class="submit-btn">Send Inquiry 📞</button>
+    </form>
+
+    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
 </div>
 
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
-function submitForm(event) {
-  event.preventDefault();
-  var btn = document.getElementById("btnSubmit");
-  btn.innerHTML = "⏳ Sending..."; btn.disabled = true;
+    // 🔥 YAHAN APNA TOKEN AUR ID DAALEIN 🔥
+    
+    // 1. Apna Bot Token yahan daalein (BotFather se lein)
+    const BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"; 
 
-  var data = {
-    source: "website_join",
-    name: document.getElementById("name").value,
-    phone: document.getElementById("phone").value,
-    link: document.getElementById("link").value,
-    subs: document.getElementById("subs").value,
-    price: document.getElementById("price").value
-  };
+    // 2. Creator Channel ID (Jo aapne diya hai)
+    const CREATOR_CHANNEL_ID = "-1003679730145"; 
 
-  // 🔥 YAHAN APNA SAHI RENDER URL CHECK KAREIN
-  var serverURL = "https://shreekrishnaagencybot.onrender.com/webhook"; 
+    // 3. Brand Channel ID (Naya banaye aur yahan daalein)
+    const BRAND_CHANNEL_ID = "YOUR_NEW_BRAND_CHANNEL_ID"; 
 
-  fetch(serverURL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  })
-  .then(response => {
-      alert("✅ Application Sent!"); 
-      // 🔥 REDIRECT LOGIC
-      window.location.href = "index.html"; 
-  })
-  .catch(error => {
-      // CORS Error aane par bhi success hi maano kyunki data chala jata hai
-      alert("✅ Application Sent (Admin Notified)!");
-      window.location.href = "index.html"; 
-  });
-}
+
+    // --- BAAKI LOGIC SAME HAI (ISE EDIT MAT KARNA) ---
+    particlesJS("particles-js", { "particles": { "number": { "value": 40 }, "color": { "value": "#FFD700" }, "line_linked": { "color": "#FFD700", "opacity": 0.2 } } });
+
+    const slider = document.getElementById('slider');
+    const formTitle = document.getElementById('form-title');
+    const creatorForm = document.getElementById('creator-form');
+    const brandForm = document.getElementById('brand-form');
+    const btns = document.querySelectorAll('.toggle-btn');
+
+    function showCreator() {
+        slider.style.left = '0';
+        btns[0].classList.add('active');
+        btns[1].classList.remove('active');
+        formTitle.innerText = "Join as Creator";
+        creatorForm.style.display = "block";
+        brandForm.style.display = "none";
+    }
+
+    function showBrand() {
+        slider.style.left = '50%';
+        btns[1].classList.add('active');
+        btns[0].classList.remove('active');
+        formTitle.innerText = "Hire Influencers";
+        creatorForm.style.display = "none";
+        brandForm.style.display = "block";
+    }
+
+    async function sendTelegramMessage(chatId, message, btnId) {
+        const btn = document.getElementById(btnId);
+        const originalText = btn.innerText;
+        btn.innerText = "⏳ Sending...";
+        btn.disabled = true;
+
+        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+        const params = {
+            chat_id: chatId,
+            text: message,
+            parse_mode: "Markdown"
+        };
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(params)
+            });
+
+            if (response.ok) {
+                alert("✅ Success! Application Sent.");
+                btn.innerText = "Sent ✅";
+                // Redirect after success
+                setTimeout(() => { window.location.href = "index.html"; }, 1000);
+            } else {
+                alert("❌ Error! Check Bot Token or Channel ID.");
+                btn.innerText = originalText;
+            }
+        } catch (error) {
+            alert("❌ Network Error!");
+            btn.innerText = originalText;
+        }
+        btn.disabled = false;
+    }
+
+    // Handle Creator Form
+    document.getElementById('creator-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const msg = `*🚀 New Creator Application*\n\n` +
+                    `👤 *Name:* ${document.getElementById('c-name').value}\n` +
+                    `🔗 *Link:* ${document.getElementById('c-link').value}\n` +
+                    `👥 *Followers:* ${document.getElementById('c-subs').value}\n` +
+                    `💰 *Promo Price:* ${document.getElementById('c-price').value}\n` +
+                    `📞 *Phone:* ${document.getElementById('c-phone').value}\n\n` +
+                    `_Source: Website_`;
+        
+        sendTelegramMessage(CREATOR_CHANNEL_ID, msg, 'c-btn');
+    });
+
+    // Handle Brand Form
+    document.getElementById('brand-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const msg = `*💼 New Brand Inquiry*\n\n` +
+                    `🏢 *Brand:* ${document.getElementById('b-name').value}\n` +
+                    `🎯 *Goal:* ${document.getElementById('b-goal').value}\n` +
+                    `💰 *Budget:* ${document.getElementById('b-budget').value}\n` +
+                    `📞 *Phone:* ${document.getElementById('b-phone').value}\n\n` +
+                    `_Source: Website_`;
+        
+        sendTelegramMessage(BRAND_CHANNEL_ID, msg, 'b-btn');
+    });
 </script>
 </body>
 </html>
